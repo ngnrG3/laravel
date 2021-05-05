@@ -19,4 +19,4 @@ use App\Http\Controllers\ZipcodeController;
 // });
 
 
-Route::get('/zip-codes/{zip_code}', [ZipcodeController::class, 'index'])->where('zip_code', '[0-9]+');
+Route::get('/api/zip-codes/{zip_code}', [ZipcodeController::class, 'index'])->where('zip_code', '[0-9]+');

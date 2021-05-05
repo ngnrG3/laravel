@@ -9,5 +9,8 @@ class SettlementType extends Model
 {
     // use HasFactory;
 
+    /**
+     * hidden fields
+     */
     protected $hidden = array('id', 'settlement_id', 'created_at', 'updated_at');
 }

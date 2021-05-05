@@ -10,17 +10,30 @@ use App\Models\FederalEntity;
 class ZipcodeController extends Controller
 {
     /**
+     * function to find information about a zipcode
      * 
+     * @param string $zip_code zipcode to search
+     * @return json with rror message or information
      */
     function index(Request $request, $zip_code) {
 
         $zipcode = ZipCode::where('zip_code', $zip_code)
             ->with('settlements.settlement_type')
             ->first();
+        
+        // if zip_code does not exist
+        if (!$zipcode) {
+            return response()->json([
+                'message' => "the zipcode $zip_code does not exist"
+            ]);
+        }
 
-        $municipality = Municipality::find($zipcode->settlements[0]->municipality_id)->first();
+        // get municipality information
+        $municipality = Municipality::find($zipcode->settlements[0]->municipality_id);
+        // get federal entity information
         $federal_entity = FederalEntity::find($municipality->federal_entity_id);
 
+        // return information
         return response()->json(
             [
                 'zip_code' => $zipcode->zip_code,
