@@ -75,5 +75,5 @@
         <td>string</td>
     </tr>
 </table>
-<p><em>Realice la normalización de la base de datos,para poder tener la relación entre estado, municipio, asentamiento, esto ayuda a la actualización de datos de una manera más fácil y segura, tomando en cuenta que hay nombres de municipios y asentamientos que se repiten  
+<p><em>Realice la normalización de la base de datos para poder tener la relación entre estado, municipio y asentamiento, esto ayuda a la actualización de datos de una manera más fácil y segura, tomando en cuenta que hay nombres de municipios y asentamientos que se repiten  
 </em></p>
