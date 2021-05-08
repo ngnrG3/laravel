@@ -13,7 +13,7 @@ class ZipcodeController extends Controller
      * function to find information about a zipcode
      * 
      * @param string $zip_code zipcode to search
-     * @return json with rror message or information
+     * @return json with error message or information
      */
     function index(Request $request, $zip_code) {
 
@@ -34,6 +34,10 @@ class ZipcodeController extends Controller
         $federal_entity = FederalEntity::find($municipality->federal_entity_id);
 
         // return information
+        $header = array (
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'charset' => 'utf-8'
+        );
         return response()->json(
             [
                 'zip_code' => $zipcode->zip_code,
@@ -41,7 +45,10 @@ class ZipcodeController extends Controller
                 'federal_entity' => $federal_entity,
                 'settlements' => $zipcode->settlements,
                 'municipality' => $municipality
-            ]
+            ],
+            200,
+            $header,
+            JSON_UNESCAPED_UNICODE
         );
     }
 }
